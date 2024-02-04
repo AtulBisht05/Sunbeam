@@ -1,0 +1,49 @@
+<mat-spinner *ngIf='loading'></mat-spinner>
+
+<div *ngIf='!loading'>
+  <mat-grid-list cols="2" rowHeight="800px">
+    <mat-grid-tile>
+
+      <mat-card>
+        <mat-card-title>
+          Map
+        </mat-card-title>
+        <mat-card-content>
+          <mat-card>
+            <mat-card-subtitle>
+              {{this?.city}}
+            </mat-card-subtitle>
+            <mat-card-content>
+              <agm-map [latitude]="this?.lat" [longitude]="this?.lon">
+                <agm-marker [latitude]="this?.lat" [longitude]="this?.lon" iconUrl="http://openweathermap.org/img/w/{{this?.icon}}.png" title={{this?.title}}>
+                </agm-marker>
+              </agm-map>
+            </mat-card-content>
+          </mat-card>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <mat-card>
+        <mat-card-title>
+          Weather around City
+        </mat-card-title>
+        <mat-card-content>
+          <mat-card>
+            <mat-list *ngFor="let data of citiesWeather">
+              <mat-list-item>
+                <strong>{{data?.city}}</strong> &nbsp; &nbsp;
+                <img src="http://openweathermap.org/img/w/{{data?.icon}}.png"> &nbsp; &nbsp;
+                <strong>{{data?.temp}}&deg;C</strong> &nbsp; &nbsp;
+                <strong>{{data?.description}}</strong>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,35 @@
+<mat-grid-list cols="1" rowHeight="1:1">
+  <mat-grid-tile>
+
+    <mat-card>
+      <mat-card-title>
+        Weather Graphs
+      </mat-card-title>
+      <mat-card-subtitle>
+        <button mat-button (click)="showGraphService.showGraphTemp('tempComponent')">
+          <strong>Temperature (&deg;C)</strong>
+        </button>
+        <button mat-button (click)="showGraphService.showGraphWind('windComponent')">
+          <strong>Wind (m/s)</strong>
+        </button>
+        <button mat-button (click)="showGraphService.showGraphPressure('pressureComponent')">
+          <strong>Pressure (hPa)</strong>
+        </button>
+        <button mat-button (click)="showGraphService.showGraphHumidity('humidityComponent')">
+          <strong>Humidity (%)</strong>
+        </button>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <app-temp-graph *ngIf="showGraphService.showTemp">
+        </app-temp-graph>
+        <app-wind-graph *ngIf="showGraphService.showWind">
+        </app-wind-graph>
+        <app-humidity-graph *ngIf="showGraphService.showHumid">
+        </app-humidity-graph>
+        <app-pressure-graph *ngIf="showGraphService.showPressure">
+        </app-pressure-graph>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>

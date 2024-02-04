@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+
+@include mat-core();
+
+$primary: mat-palette($mat-lime, 500);
+$accent:  mat-palette($mat-lime, 500, A200, A400);
+$warn:    mat-palette($mat-red, 500);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+body {
+    font-family: $mat-font-family;
+    font-weight: normal;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: normal;
+}
+
+$maxTemp-color:rgb(255, 207, 74);
+$minTemp-color:rgb(161,161,161);
+$minTemp-text-color:rgb(255,255,255);
+
+mat-card{
+    width:95%;
+    height:100%;
+}
+
+mat-card-title{
+    padding-left:5%;
+    padding-top:5%;
+}
+
+mat-sidenav-container{
+    height:900px;
+    width:100%;
+}
+
+mat-spinner{
+    margin-left:45%;
+    margin-top:25%;
+}

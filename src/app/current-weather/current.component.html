@@ -1,0 +1,94 @@
+<mat-spinner *ngIf='loading'></mat-spinner>
+
+<div *ngIf='!loading'>
+  <mat-grid-list cols="2" rowHeight='400px'>
+    <mat-grid-tile>
+
+      <mat-card>
+        <mat-card-title>
+          Current Weather {{myWeather?.city}}, {{myWeather?.country}}
+        </mat-card-title>
+        <mat-card-content>
+          <h3>
+            <form (ngSubmit)="onSubmit(weatherForm)" #weatherForm="ngForm">
+              <mat-form-field>
+                <input matInput type="text" name="city" placeholder="Your City Name" [(ngModel)]="city" required>
+              </mat-form-field>
+              <button mat-button>Go</button>
+              <app-alert></app-alert>
+            </form>
+          </h3>
+          <strong> {{myWeather?.date| date:'EEEE, d MMMM y'}}</strong>
+          <h3>
+            <strong> {{myWeather?.city}}&nbsp; {{myWeather?.temp}}&deg;C
+              <img src="http://openweathermap.org/img/w/{{myWeather?.icon}}.png"> &nbsp; {{myWeather?.weatherKind}}
+            </strong>
+          </h3>
+          <table>
+            <tr>
+              <td>Max Temp:</td>
+              <th>{{myWeather?.tempMax}}&deg;C</th>
+              <td>Min Temp:</td>
+              <th>{{myWeather?.tempMin}}&deg;C </th>
+              <td>Cloud:</td>
+              <th>{{myWeather?.cloudiness}}% </th>
+            </tr>
+            <tr>
+              <td>Sunrise:</td>
+              <th>{{myWeather?.sunrise}}</th>
+              <td>Sunset:</td>
+              <th>{{myWeather?.sunset}}</th>
+              <td>Pressure:</td>
+              <th>{{myWeather?.pressure}} hPa</th>
+            </tr>
+            <tr>
+              <td>Wind Speed:</td>
+              <th>{{myWeather?.wind_speed}} m/s</th>
+              <td>Humidity:</td>
+              <th>{{myWeather?.humid}}% </th>
+              <td>Geo Coords:</td>
+              <th>{{myWeather?.coords.lat}},{{myWeather?.coords.lon}} </th>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-title>
+          Temperature and Humidity
+        </mat-card-title>
+        <mat-card-content>
+          <chart class="THChart" [type]="THChart" [data]="THValues" [options]="THOption"></chart>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <mat-grid-list cols="2" rowHeight="400px">
+
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-title>
+          Pressure
+        </mat-card-title>
+        <mat-card-content>
+          <chart [type]="pressureChart" [data]="pressureValues" [options]="pressureOption"></chart>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-title>
+          Wind Speed
+        </mat-card-title>
+        <mat-card-content>
+          <chart [type]="windChart" [data]="windValues" [options]="windOption"></chart>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

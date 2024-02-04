@@ -1,0 +1,41 @@
+<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1" [speed]="200" [showSpinner]="true" [direction]="'leftToRightIncreased'"
+  [color]="'#B2DFDB'" [trickleSpeed]="250" [thick]="false" [ease]="'linear'">
+</ng-progress>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <img src="assets/img/SWA.png">
+
+    <mat-nav-list>
+      <mat-list-item (click)="onClick('/currnet')">
+        <mat-icon>home</mat-icon> &nbsp; &nbsp;
+        <strong>Current Weather</strong>
+      </mat-list-item>
+      <mat-list-item (click)="onClick('/weatherForecast')">
+        <mat-icon>wb_sunny</mat-icon> &nbsp; &nbsp;
+        <strong>Weather Forecast</strong>
+      </mat-list-item>
+      <mat-list-item (click)="onClick('/chart')">
+        <mat-icon>show_chart</mat-icon> &nbsp; &nbsp;
+        <strong>Weather Graphs</strong>
+      </mat-list-item>
+      <mat-list-item (click)="onClick('/map')">
+        <mat-icon>map</mat-icon> &nbsp; &nbsp;
+        <strong>Map and Cities Weather</strong>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <mat-nav-list>
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon> menu
+          </mat-icon>
+        </mat-list-item>
+      </mat-nav-list>
+      <strong>SunBeam Weather App</strong>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

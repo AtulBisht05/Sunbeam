@@ -1,0 +1,19 @@
+@import 'src/styles';
+
+.maxTemp,.minTemp{
+    padding:1px;
+    border-radius: 2px;
+}
+
+.maxTemp{
+    background-color: $maxTemp-color;
+}
+
+.minTemp{
+    background-color: $minTemp-color;
+    color:$minTemp-text-color;
+}
+
+mat-card-title{
+    padding-top:0%;
+}
